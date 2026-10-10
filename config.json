@@ -1,0 +1,11 @@
+{
+  "routes": [
+    { "name": "London to Lille", "origin": "7015400", "destination": "8722326" },
+    { "name": "Lille to London", "origin": "8722326", "destination": "7015400" }
+  ],
+  "weekdays": ["Friday", "Sunday"],
+  "earliest_slot_start": "13:00",
+  "adults": 1,
+  "days_ahead": 15,
+  "seconds_between_requests": 3
+}
