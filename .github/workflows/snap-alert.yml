@@ -1,0 +1,76 @@
+name: Eurostar Snap alert
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes (GitHub may run a few minutes late)
+  workflow_dispatch:         # lets you run it by hand from the Actions tab
+    inputs:
+      test_email:
+        description: "Only send a test email"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write            # needed to save state.json back to the repo
+
+concurrency:
+  group: snap-alert
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Send test email
+        if: ${{ inputs.test_email }}
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+        run: python snap_alert.py --test-email
+
+      - name: Check Snap availability
+        if: ${{ !inputs.test_email }}
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+        run: python snap_alert.py
+
+      - name: Save state
+        if: ${{ !inputs.test_email }}
+        run: |
+          git config user.name "snap-alert-bot"
+          git config user.email "snap-alert-bot@users.noreply.github.com"
+          git add state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Snap availability state"
+            git push
+          else
+            # GitHub pauses scheduled workflows after 60 days with no commits.
+            # Push an empty commit every ~30 days to keep it running.
+            last=$(git log -1 --format=%ct)
+            now=$(date +%s)
+            if [ $(( (now - last) / 86400 )) -ge 30 ]; then
+              git commit --allow-empty -m "Keep scheduled workflow active"
+              git push
+            fi
+          fi
+
+      - name: Upload pages that could not be read
+        if: ${{ always() && hashFiles('debug/*.html') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-pages
+          path: debug/
+          retention-days: 3
