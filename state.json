@@ -7,14 +7,6 @@
       "route": "Lille to London",
       "start": "14:00",
       "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=8722326&destination=7015400&outbound=2026-10-15"
-    },
-    "London to Paris|2026-10-16|13:00-20:01": {
-      "date": "2026-10-16",
-      "end": "20:01",
-      "price": 85.0,
-      "route": "London to Paris",
-      "start": "13:00",
-      "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=7015400&destination=8727100&outbound=2026-10-16"
     }
   },
   "fail_streak": 0,
