@@ -9,6 +9,6 @@
       "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=8722326&destination=7015400&outbound=2026-10-15"
     }
   },
-  "fail_streak": 7,
-  "warning_sent": false
+  "fail_streak": 8,
+  "warning_sent": true
 }
