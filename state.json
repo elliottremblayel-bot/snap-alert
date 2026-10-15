@@ -1,14 +1,5 @@
 {
-  "available": {
-    "Lille to London|2026-10-15|14:00-21:35": {
-      "date": "2026-10-15",
-      "end": "21:35",
-      "price": 55.0,
-      "route": "Lille to London",
-      "start": "14:00",
-      "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=8722326&destination=7015400&outbound=2026-10-15"
-    }
-  },
-  "fail_streak": 106,
+  "available": {},
+  "fail_streak": 107,
   "warning_sent": true
 }
