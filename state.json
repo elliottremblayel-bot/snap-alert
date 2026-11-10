@@ -11,7 +11,7 @@
     "Paris to London|2026-11-20|14:00-21:09": {
       "date": "2026-11-20",
       "end": "21:09",
-      "price": 50.0,
+      "price": 55.0,
       "route": "Paris to London",
       "start": "14:00",
       "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=8727100&destination=7015400&outbound=2026-11-20"
