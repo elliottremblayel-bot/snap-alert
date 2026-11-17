@@ -3,7 +3,7 @@
     "London to Brussels|2026-11-20|13:00-19:34": {
       "date": "2026-11-20",
       "end": "19:34",
-      "price": 55.0,
+      "price": 65.0,
       "route": "London to Brussels",
       "start": "13:00",
       "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=7015400&destination=8814001&outbound=2026-11-20"
@@ -11,7 +11,7 @@
     "London to Lille|2026-11-20|13:00-19:34": {
       "date": "2026-11-20",
       "end": "19:34",
-      "price": 55.0,
+      "price": 65.0,
       "route": "London to Lille",
       "start": "13:00",
       "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=7015400&destination=8722326&outbound=2026-11-20"
