@@ -17,6 +17,6 @@
       "url": "https://snap.eurostar.com/uk-en/search?adult=1&origin=8727100&destination=7015400&outbound=2026-11-20"
     }
   },
-  "fail_streak": 1,
+  "fail_streak": 2,
   "warning_sent": false
 }
